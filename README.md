@@ -27,3 +27,4 @@
 - **Comprovação:**
 
 - **O que foi levantado:**
+## Requisitos funcionais 
