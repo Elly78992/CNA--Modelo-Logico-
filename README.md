@@ -127,7 +127,7 @@
 
 ## **5-Uso de Inteligência Artificial**
 |Item|O que registrar|
-|----------------------|---|------------------|
+|----------------------|------------------|
 |Ferramenta e etapa|
 |Motivação|
 |Prompt(s) utilizados|
