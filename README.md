@@ -45,7 +45,7 @@ A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para r
 - **Comprovação:**
 
 - **O que foi levantado:**
-  [Visualizar levantamento completo](levantamento/levantamento.md)
+  [Levantamento das informações](levantamento/levantamento.md)
 
 ## **Processos de Negócios:** 
 O principal processo identificado na CNA consiste no levantamento, registro e atualização das informações referentes aos equipamentos tecnológicos utilizados pelos colaboradores, abrangendo notebooks e celulares.
