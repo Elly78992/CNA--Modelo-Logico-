@@ -28,11 +28,15 @@ Com base no levantamento realizado, foram identificadas as seguintes necessidade
 - *P3 – Padronização dos dados:* necessidade de reduzir inconsistências decorrentes do preenchimento e da atualização manual da planilha.
 - *P4 – Acompanhamento do inventário:* necessidade de organizar as informações referentes à situação dos equipamentos e à conferência dos registros.
 - **Escopo do sistema:**
+  O sistema proposto tem como objetivo organizar e centralizar as informações relacionadas ao inventário de equipamentos tecnológicos utilizados pelos colaboradores da CNA. A solução contempla o cadastro de colaboradores, departamentos, equipamentos, características técnicas, identificação patrimonial, garantias, situação dos dispositivos, atribuições, devoluções e histórico de alterações.
+Também são considerados os registros relacionados a fornecedores, aquisições e licenças de software, conforme as entidades previstas no modelo de dados.
+ O sistema não tem como finalidade substituir a plataforma externa utilizada pela TecNews para controlar solicitações de atendimento e manutenção. Dessa forma,   o projeto concentra-se na organização dos dados do inventário e no acompanhamento das informações necessárias à gestão dos ativos tecnológicos.
 
 - **Justificativa da escolha:**
 A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para realizar o levantamento de informações. A pesquisa de campo foi realizada por meio de entrevista com um representante da empresa TecNews, possibilitando compreender o contexto tecnológico e o processo de controle do inventário.
 
 - **Evidência da organização:**
+  A organização escolhida para o desenvolvimento do projeto é a CNA. A evidência do levantamento consiste na planilha oficial de inventário disponibilizada para análise e nas informações obtidas durante a entrevista com um representante da empresa TecNews, responsável pelo suporte tecnológico da CNA.
 
 - **Responsável pela organização:**
 
@@ -92,8 +96,12 @@ Dessa forma, o banco de dados desenvolvido pelo grupo tem como objetivo organiza
  - **Levantamento dos requisitos típicos do tipo de organização.**
  
  - **Justificação dos requisitos prováveis não incluídos:**
+   A organização escolhida para o desenvolvimento do projeto é a CNA. A evidência do levantamento consiste na planilha oficial de inventário disponibilizada para análise e nas informações obtidas durante a entrevista com um representante da empresa TecNews, responsável pelo suporte tecnológico da CNA.
 
 ## **Regras de negócio:**
+As regras de negócio foram definidas considerando a necessidade de manter o inventário atualizado, garantir a identificação dos equipamentos, controlar a responsabilidade dos colaboradores e preservar o histórico das movimentações.
+
+Entre as regras identificadas estão a alocação exclusiva de equipamentos, a obrigatoriedade de registrar devoluções, a manutenção do histórico de alterações, o controle das garantias e a utilização de licenças válidas para os softwares registrados.
 
 - **Levante as regras típicas do tipo de organização.**
 
@@ -110,6 +118,7 @@ Dessa forma, o banco de dados desenvolvido pelo grupo tem como objetivo organiza
   **RN06 - Controle de licenciamento:** Todo software instalado em um equipamento deve possuir uma licença válida e registrada no inventário, compatível com o uso realizado e com a quantidade de instalações autorizadas.     
 
 - **Justifique as regras prováveis não incluídas:**
+  Não foram definidas regras detalhadas para o fluxo de atendimento técnico, priorização de chamados, distribuição de técnicos, controle de SLA e execução de serviços de manutenção, pois esses procedimentos pertencem ao sistema externo de suporte da TecNews. Também não foram estabelecidas regras específicas para aprovação financeira de compras, negociação com fornecedores ou procedimentos administrativos de descarte que não tenham sido confirmados no levantamento realizado.
 
 ## **Notação do DER conceitual**
 
@@ -124,27 +133,72 @@ Dessa forma, o banco de dados desenvolvido pelo grupo tem como objetivo organiza
 ## **1.2 Conversão do Modelo Conceitual para o Modelo Lógico**
 
 - **Entidades → Tabelas:**
+  As entidades identificadas no modelo conceitual foram transformadas em tabelas no modelo lógico. Cada tabela representa um elemento importante do domínio do problema, como colaboradores, departamentos, equipamentos, fornecedores, compras e licenças de software.
 
 - **Atributos → Colunas:**
+  Os atributos das entidades foram convertidos em colunas das respectivas tabelas, com tipos de dados adequados à informação armazenada. Foram considerados campos numéricos, textos, datas e identificadores, conforme a finalidade de cada atributo.
 
 - **Relacionamentos → Chaves:**
+  Os relacionamentos entre as entidades foram representados por meio de chaves estrangeiras. Essas chaves permitem associar os registros das diferentes tabelas, mantendo a integridade referencial do banco de dados.
 
 - **Cardinalidades:**
+ As cardinalidades definidas no modelo conceitual foram consideradas durante a transformação dos relacionamentos para o modelo lógico. Nos relacionamentos de um para muitos, a chave estrangeira é posicionada na tabela correspondente ao lado muitos. Nos relacionamentos de um para um, a implementação deve garantir a associação adequada entre os registros, utilizando restrições de unicidade quando necessário.
+
+Nos relacionamentos de muitos para muitos, a utilização de uma tabela associativa permite armazenar as referências das entidades envolvidas e representar corretamente as associações.
+
+A preservação das cardinalidades é importante para garantir que o modelo lógico represente as regras estabelecidas durante a modelagem conceitual.
 
 - **Generalização/especialização:**
+  A generalização e a especialização foram consideradas para representar categorias de equipamentos que compartilham características comuns, mas possuem atributos específicos.
 
+No contexto do projeto, notebooks e celulares possuem informações gerais em comum, como identificação patrimonial, fabricante, modelo e situação, mas também podem apresentar características particulares.
+
+A organização dessas informações deve respeitar a estrutura efetivamente adotada no modelo lógico, mantendo os dados comuns na estrutura geral e os dados específicos nas tabelas correspondentes, caso a especialização tenha sido implementada dessa forma.
 
 ## **1.3 Definição de Chaves Primárias e Estrangeiras**
+As chaves primárias foram definidas para identificar exclusivamente cada registro das tabelas, evitando duplicidade e permitindo localizar os dados de maneira precisa.
+
+As chaves estrangeiras foram utilizadas para estabelecer os relacionamentos entre as tabelas e garantir que os registros relacionados pertençam a entidades existentes no banco de dados.
+
+A definição das chaves considera as seguintes finalidades:
+- Identificar individualmente colaboradores, equipamentos, departamentos e demais registros.
+- Relacionar equipamentos aos colaboradores responsáveis por sua utilização.
+- Associar equipamentos aos seus fabricantes, fornecedores e informações de aquisição, quando aplicável.
+- Relacionar licenças aos softwares e equipamentos correspondentes.
+- Registrar o histórico de movimentações e alterações dos equipamentos.
+- Garantir a integridade dos relacionamentos entre as tabelas.
 
 ## **1.4 Processo de Normalização (1FN, 2FN e 3FN)**
 
 - **1FN:**
+  A Primeira Forma Normal estabelece que cada campo de uma tabela deve armazenar apenas um valor por registro, evitando a utilização de atributos com múltiplos valores ou grupos repetitivos.
+
+No contexto do projeto, essa forma normal é importante para garantir que informações como patrimônio, número de série, modelo, fabricante e situação sejam armazenadas em campos próprios.
+
+A organização dos dados dessa maneira facilita as consultas e permite realizar alterações em informações específicas sem comprometer outros registros. Também evita que diferentes informações sejam armazenadas juntas em uma única coluna, dificultando sua interpretação e manipulação.
 
 - **2FN:**
+A Segunda Forma Normal determina que todos os atributos não pertencentes à chave dependam integralmente da chave primária da tabela.
+
+Essa condição é especialmente importante quando são utilizadas chaves primárias compostas, pois evita que um atributo dependa apenas de parte da chave.
+
+Durante a organização do modelo lógico, foram consideradas as dependências entre os atributos, buscando manter em cada tabela somente as informações que pertencem à entidade representada. Essa separação contribui para reduzir a repetição de dados e evitar que informações de uma entidade sejam armazenadas desnecessariamente em outra.
 
 - **3FN:**
+A Terceira Forma Normal estabelece que os atributos não-chave devem depender diretamente da chave primária, evitando dependências transitivas entre atributos.
+
+No projeto, essa forma normal foi considerada para organizar informações que possuem significado próprio em tabelas específicas, permitindo que sejam relacionadas por meio de chaves estrangeiras.
+
+Por exemplo, informações referentes a departamentos devem permanecer associadas à entidade Departamento, enquanto os dados dos colaboradores devem permanecer na respectiva tabela. Essa organização evita a repetição de informações e facilita a manutenção dos registros quando ocorrem alterações nos dados de uma entidade.
 
 - **Justificativa do processo:**
+  A aplicação dos princípios de normalização tem como finalidade melhorar a organização do banco de dados e reduzir problemas relacionados à duplicidade de informações.
+
+A separação dos dados em tabelas relacionadas permite que cada informação seja armazenada em seu local apropriado, diminuindo a possibilidade de inconsistências durante operações de inclusão, alteração e exclusão.
+
+Além disso, a normalização contribui para facilitar a manutenção do sistema e melhorar a integridade das informações armazenadas.
+
+No contexto da CNA, essa organização é importante porque o inventário reúne diferentes informações sobre colaboradores, departamentos e equipamentos, que precisam permanecer relacionadas de maneira consistente.
 
 ## **1.5 Justificativas Técnicas das Decisões**
 
