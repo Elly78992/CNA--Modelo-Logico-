@@ -9,8 +9,49 @@
 | Maria Eduarda Kostkievicz Ferreira| 4790715-1|
 
 ## 1- **Relatório técnico** 
+
 ## **1.1- Revisao do Modelo Conceitual**
+O modelo conceitual elaborado na Entrega 1 tinha como objetivo principal representar o controle do inventário de equipamentos de informática da organização CNA, considerando os serviços de suporte técnico realizados pela empresa TecNews. O diagrama contemplava entidades como Colaborador, Equipamento, Compra, Item_Compra, Fornecedor, Validação, Notebook, Celular, Sistema_Operacional e Marca, permitindo representar parte das informações relacionadas ao cadastro e ao acompanhamento dos equipamentos.
+
+Entretanto, durante a avaliação da primeira entrega, foram identificadas limitações na estrutura do modelo conceitual. A principal delas estava relacionada à cobertura incompleta dos processos de negócio da organização, pois o diagrama concentrava-se no inventário e não representava adequadamente outros procedimentos importantes, como aquisição de equipamentos, entrega e devolução aos colaboradores, acionamento de garantia, descarte de equipamentos e controle de licenças de software.
+
+Também foram identificados problemas na organização dos relacionamentos. A especialização de Equipamento em Notebook e Celular apresentava atributos repetidos que já pertenciam à entidade principal, como identificador, número de série e patrimônio. Além disso, alguns relacionamentos não representavam corretamente as regras de negócio: o vínculo entre celular e colaborador permitia uma interpretação inadequada da quantidade de colaboradores associados a um equipamento, e a entidade Serviço não possuía ligação direta com o equipamento atendido. A entidade Validação também apresentava limitações em sua associação com os diferentes tipos de equipamentos. Markdown colado.md
+
+
+A partir dessas observações, o modelo conceitual foi revisado e ampliado para representar de maneira mais completa os processos relacionados ao gerenciamento dos recursos tecnológicos da organização. A revisão também buscou melhorar a organização das entidades, eliminar redundâncias e estabelecer relacionamentos mais coerentes com as regras de negócio identificadas durante o levantamento de informações.
+
+Entre as principais alterações realizadas, destacam-se:
+
+**1. Controle de colaboradores e departamentos:** foi aprimorada a representação dos colaboradores e incluída a entidade Departamento, permitindo organizar os funcionários de acordo com suas respectivas áreas e relacioná-los aos equipamentos utilizados.
+
+**2. Histórico de alocação de equipamentos:** foi criada a entidade Alocação para registrar a entrega e a devolução dos equipamentos, incluindo datas, situação, observações e condições de devolução. Essa alteração permite acompanhar o histórico de utilização dos equipamentos, em vez de manter apenas um vínculo direto com o colaborador.
+
+**3. Controle de compras:** o processo de aquisição foi ampliado com as entidades Solicitação de Compra, Aprovação de Compra, Cotação, Compra e Item de Compra. Dessa forma, o modelo passou a representar as etapas envolvidas na solicitação, aprovação, cotação e registro das aquisições.
+
+**4. Cadastro de fornecedores:** a entidade Fornecedor foi mantida e integrada aos processos de compra, cotação, serviços e acionamento de garantia, possibilitando identificar as empresas envolvidas no fornecimento de equipamentos e na prestação de serviços.
+
+**5. Controle de chamados e serviços:** a estrutura foi ampliada com as entidades Chamado e Serviço, permitindo registrar solicitações de suporte técnico, atendimentos realizados, datas, prioridades, resultados e equipamentos envolvidos.
+
+**6. Controle de garantia:** foi incluída a entidade Acionamento de Garantia, destinada ao registro das solicitações realizadas aos fornecedores, incluindo protocolo, data, situação e resultado do atendimento.
+
+**7. Controle de software e licenças:** foram acrescentadas as entidades Software, Licença de Software e Licença de Atribuição, permitindo acompanhar os programas utilizados, suas licenças, prazos de validade e atribuições aos colaboradores e equipamentos.
+
+**8. Movimentação e destinação de equipamentos:** foram incluídas as entidades Movimentação_Destinação e Descarte, permitindo registrar alterações de destino, transferências e procedimentos relacionados à retirada de equipamentos do inventário.
+
+**9. Aprimoramento das validações:** a entidade Validação foi reorganizada para registrar informações sobre verificações realizadas nos equipamentos, responsáveis, resultados, alterações e procedimentos de sanitização.
+
+Com essas alterações, o modelo deixou de representar somente o cadastro e o acompanhamento básico dos equipamentos e passou a abranger diferentes etapas do ciclo de vida dos recursos tecnológicos, desde a solicitação de compra até a utilização, manutenção, movimentação e destinação final.
+
+A revisão também buscou corrigir os problemas de relacionamento identificados na primeira entrega, evitando a repetição desnecessária de atributos e melhorando a representação das associações entre as entidades. O modelo revisado serviu como base para a elaboração do modelo lógico, do processo de normalização e da estrutura do banco de dados.
+
 ## **Caracterização da Organização:**  
+A organização utilizada como referência para o desenvolvimento do projeto é o CNA, uma instituição que atua como franqueadora e centro de operações pedagógicas, administrativas, tecnológicas e financeiras para sua rede de ensino. Os serviços de suporte técnico e infraestrutura de tecnologia da informação são prestados pela empresa TecNews, responsável por atividades como Suporte N1 e N2, Service Desk, Help Desk, monitoramento de links e sites, além de suporte e gerenciamento de redes.
+
+A unidade estudada possui porte corporativo médio/grande e conta com mais de 340 equipamentos ativos de tecnologia da informação, utilizados por colaboradores de diferentes setores. Entre os dispositivos utilizados estão notebooks, celulares e linhas telefônicas corporativas.
+
+A organização necessita manter informações atualizadas sobre seus equipamentos, colaboradores, departamentos, softwares, licenças, fornecedores, garantias e movimentações patrimoniais. Esses dados são importantes para o acompanhamento dos recursos tecnológicos e para auxiliar na tomada de decisões administrativas e operacionais.
+
+Durante o levantamento de informações, foram identificadas algumas dificuldades relacionadas ao controle dos dados, como duplicidade de cadastros de equipamentos, registros incorretos e informações de colaboradores desligados. Também foi identificada a necessidade de melhorar a integração entre os dados de hardware, software, garantias, linhas telefônicas e informações financeiras, como notas fiscais e custos
 
 - **Nome e natureza da organização:**
 A organização selecionada para o desenvolvimento do projeto é a CNA, que utiliza recursos tecnológicos para apoiar suas atividades. A organização conta com o suporte da empresa TecNews, responsável pela prestação de serviços relacionados à tecnologia da informação.
@@ -21,12 +62,20 @@ A planilha analisada possui aproximadamente 997 linhas e 26 colunas, considerand
 As atualizações são realizadas manualmente, e o volume de consultas e alterações é relativamente baixo. Essas características indicam a necessidade de uma solução capaz de organizar os registros, facilitar as consultas e padronizar o armazenamento das informações.
 A CNA também conta com o suporte tecnológico da empresa TecNews, que oferece serviços de TI. Entretanto, as solicitações de atendimento e os registros de manutenção são controlados por outro sistema, ao qual o grupo não possui acesso. Por esse motivo, essas informações não fazem parte do escopo do banco de dados desenvolvido neste projeto.
 - **Problemas e necessidades identificados:**
-Com base no levantamento realizado, foram identificadas as seguintes necessidades:
+Durante o levantamento de informações, foram identificadas dificuldades relacionadas ao controle e à organização dos dados dos equipamentos. Entre os problemas relatados, destacam-se a existência de registros duplicados, informações incorretas e dados de colaboradores desligados que permaneciam nos controles.
 
-- *P1 – Organização dos registros:* necessidade de centralizar as informações dos colaboradores e dos equipamentos em uma estrutura padronizada.
-- *P2 – Localização das informações:* necessidade de facilitar a consulta dos dados cadastrais e técnicos dos equipamentos.
-- *P3 – Padronização dos dados:* necessidade de reduzir inconsistências decorrentes do preenchimento e da atualização manual da planilha.
-- *P4 – Acompanhamento do inventário:* necessidade de organizar as informações referentes à situação dos equipamentos e à conferência dos registros.
+Também foi identificada a necessidade de melhorar o acompanhamento do histórico dos equipamentos, permitindo identificar quem utilizou determinado recurso, quando ocorreu sua entrega ou devolução, quais manutenções foram realizadas e qual é sua situação atual.
+
+Além disso, a organização necessita acompanhar informações relacionadas a:
+- Inventário de equipamentos: identificação, modelo, fabricante, número de série, patrimônio, características técnicas e situação.
+- Colaboradores e departamentos: identificação dos funcionários e das áreas às quais pertencem.
+- Alocação de equipamentos: registro das entregas, devoluções e condições dos equipamentos.
+- Aquisições: controle das solicitações, aprovações, cotações, compras, notas fiscais e fornecedores.
+- Garantias: acompanhamento dos prazos e dos acionamentos realizados junto aos fornecedores.
+- Suporte técnico: registro dos chamados, serviços realizados, responsáveis e resultados dos atendimentos.
+- Licenças de software: controle dos programas utilizados, quantidade de licenças, validade e atribuições.
+- Movimentação e descarte: acompanhamento das transferências, alterações de destino, descarte e aproveitamento de componentes.
+- 
 - **Escopo do sistema:**
   O sistema proposto tem como objetivo organizar e centralizar as informações relacionadas ao inventário de equipamentos tecnológicos utilizados pelos colaboradores da CNA. A solução contempla o cadastro de colaboradores, departamentos, equipamentos, características técnicas, identificação patrimonial, garantias, situação dos dispositivos, atribuições, devoluções e histórico de alterações.
 Também são considerados os registros relacionados a fornecedores, aquisições e licenças de software, conforme as entidades previstas no modelo de dados.
@@ -146,8 +195,6 @@ Entre as regras identificadas estão a alocação exclusiva de equipamentos, a o
 
 Nos relacionamentos de muitos para muitos, a utilização de uma tabela associativa permite armazenar as referências das entidades envolvidas e representar corretamente as associações.
 
-A preservação das cardinalidades é importante para garantir que o modelo lógico represente as regras estabelecidas durante a modelagem conceitual.
-
 - **Generalização/especialização:**
   A generalização e a especialização foram consideradas para representar categorias de equipamentos que compartilham características comuns, mas possuem atributos específicos.
 
@@ -171,28 +218,27 @@ A definição das chaves considera as seguintes finalidades:
 ## **1.4 Processo de Normalização (1FN, 2FN e 3FN)**
 
 - **1FN:**
-  A Primeira Forma Normal estabelece que cada campo de uma tabela deve armazenar apenas um valor por registro, evitando a utilização de atributos com múltiplos valores ou grupos repetitivos.
-
-No contexto do projeto, essa forma normal é importante para garantir que informações como patrimônio, número de série, modelo, fabricante e situação sejam armazenadas em campos próprios.
-
-A organização dos dados dessa maneira facilita as consultas e permite realizar alterações em informações específicas sem comprometer outros registros. Também evita que diferentes informações sejam armazenadas juntas em uma única coluna, dificultando sua interpretação e manipulação.
+- Colaborador: os dados pessoais e corporativos foram separados em atributos específicos, como nome, sobrenome, email_corporativo e data_admissao.
+- Equipamento: cada característica do equipamento foi armazenada em um campo próprio, como patrimonio, numero_serie, fabricante, modelo, processador e memoria_ram.
+- Fornecedor: as informações de identificação e contato foram organizadas em campos individuais, como nome, tipo_fornecedor, telefone e email.
+- Item_compra: cada item possui sua própria identificação, descrição, quantidade e valor unitário, evitando reunir diferentes produtos em um único campo.
+- Celular: informações específicas dos dispositivos móveis, como linha_telefonica, imei_1 e imei_2, foram organizadas em atributos próprios.
 
 - **2FN:**
-A Segunda Forma Normal determina que todos os atributos não pertencentes à chave dependam integralmente da chave primária da tabela.
-
-Essa condição é especialmente importante quando são utilizadas chaves primárias compostas, pois evita que um atributo dependa apenas de parte da chave.
-
-Durante a organização do modelo lógico, foram consideradas as dependências entre os atributos, buscando manter em cada tabela somente as informações que pertencem à entidade representada. Essa separação contribui para reduzir a repetição de dados e evitar que informações de uma entidade sejam armazenadas desnecessariamente em outra.
+- Colaborador e Departamento: os dados do departamento foram mantidos na tabela Departamento, enquanto a tabela Colaborador armazena o identificador do departamento ao qual o funcionário está vinculado.
+- Software e Licenca_software: os dados de identificação do software foram separados das informações referentes às licenças, como quantidade, tipo, data de início, validade e status.
+- Compra e Item_compra: os dados gerais da aquisição foram organizados na tabela Compra, enquanto os produtos ou equipamentos adquiridos foram registrados individualmente em Item_compra.
+- Solicitacao_compra e Cotacao: as informações da solicitação foram separadas dos dados das cotações recebidas dos fornecedores.
 
 - **3FN:**
-A Terceira Forma Normal estabelece que os atributos não-chave devem depender diretamente da chave primária, evitando dependências transitivas entre atributos.
-
-No projeto, essa forma normal foi considerada para organizar informações que possuem significado próprio em tabelas específicas, permitindo que sejam relacionadas por meio de chaves estrangeiras.
-
-Por exemplo, informações referentes a departamentos devem permanecer associadas à entidade Departamento, enquanto os dados dos colaboradores devem permanecer na respectiva tabela. Essa organização evita a repetição de informações e facilita a manutenção dos registros quando ocorrem alterações nos dados de uma entidade.
+- Colaborador e Departamento: o nome do departamento é armazenado na tabela Departamento, enquanto a tabela Colaborador mantém apenas a referência ao departamento por meio da chave estrangeira id_departamento. Assim, alterações no nome do departamento não exigem atualizações em todos os registros dos colaboradores.
+- Fornecedor e Cotacao: os dados cadastrais dos fornecedores ficam concentrados na tabela Fornecedor, enquanto a tabela Cotacao registra as informações das propostas comerciais e referencia o fornecedor responsável.
+- Software e Licenca_software: as informações de identificação do software ficam na tabela Software, enquanto os dados específicos das licenças são armazenados em Licenca_software.
+- Equipamento e Alocacao: os dados permanentes de identificação e configuração dos equipamentos ficam na tabela Equipamento, enquanto as informações sobre entrega, devolução e situação da utilização são registradas em Alocacao.
+- Chamado e Servico: as informações da solicitação de suporte são armazenadas na tabela Chamado, enquanto os serviços executados durante o atendimento são registrados separadamente na tabela Servico.
 
 - **Justificativa do processo:**
-  A aplicação dos princípios de normalização tem como finalidade melhorar a organização do banco de dados e reduzir problemas relacionados à duplicidade de informações.
+A aplicação dos princípios de normalização tem como finalidade melhorar a organização do banco de dados e reduzir problemas relacionados à duplicidade de informações.
 
 A separação dos dados em tabelas relacionadas permite que cada informação seja armazenada em seu local apropriado, diminuindo a possibilidade de inconsistências durante operações de inclusão, alteração e exclusão.
 
@@ -209,198 +255,249 @@ Essa escolha evita que informações descritivas, como nomes, modelos, números 
 
 **No modelo, cada entidade possui sua própria chave primária, conforme sua finalidade:**
 
-- Departamento: id_departamento, identifica individualmente cada departamento da empresa.
+-**Departamento:** id_departamento, identifica individualmente cada departamento da empresa.
 
-- Colaborador: id_colaborador, identifica cada funcionário cadastrado.
+- **Colaborador:** id_colaborador, identifica cada funcionário cadastrado.
 
-- Equipamento: id_equipamento, identifica cada equipamento pertencente ao patrimônio tecnológico.
+- **Equipamento:** id_equipamento, identifica cada equipamento pertencente ao patrimônio tecnológico.
 
-- Alocacao: id_alocacao, identifica cada registro de entrega e devolução de equipamentos.
+- **Alocacao:** id_alocacao, identifica cada registro de entrega e devolução de equipamentos.
 
-- Chamado: id_chamado, identifica individualmente as solicitações de suporte.
+- **Chamado:** id_chamado, identifica individualmente as solicitações de suporte.
 
-- Servico: id_servico, identifica cada serviço executado.
+- **Servico:** id_servico, identifica cada serviço executado.
 
-- Fornecedor: id_fornecedor, identifica cada fornecedor cadastrado.
+- **Fornecedor:** id_fornecedor, identifica cada fornecedor cadastrado.
 
-- Solicitacao_compra: id_solicitacao_compra, identifica cada solicitação de aquisição.
+- **Solicitacao_compra:** id_solicitacao_compra, identifica cada solicitação de aquisição.
 
-- Aprovacao_compra: id_aprovacao, identifica cada registro de aprovação de compra.
+- **Aprovacao_compra:** id_aprovacao, identifica cada registro de aprovação de compra.
 
-- Cotacao: id_cotacao, identifica cada cotação realizada.
+- **Cotacao:** id_cotacao, identifica cada cotação realizada.
 
-- Compra: id_compra, identifica cada aquisição efetuada.
+- **Compra:** id_compra, identifica cada aquisição efetuada.
 
-- Item_compra: id_item_compra, identifica individualmente cada item de uma compra.
+- **Item_compra:** id_item_compra, identifica individualmente cada item de uma compra.
 
-- Software: id_software, identifica os programas cadastrados.
+- **Software:** id_software, identifica os programas cadastrados.
 
-- Licenca_software: id_licenca_software, identifica cada licença de software registrada.
+- **Licenca_software:** id_licenca_software, identifica cada licença de software registrada.
 
-- Licenca_atribuicao: id_licenca_atribuicao, identifica cada atribuição de licença.
+- **Licenca_atribuicao:** id_licenca_atribuicao, identifica cada atribuição de licença.
 
-- Movimentacao_destinacao: id_movimentacao_destinacao, identifica cada movimentação ou alteração de destinação de um equipamento.
+- **Movimentacao_destinacao:** id_movimentacao_destinacao, identifica cada movimentação ou alteração de destinação de um equipamento.
 
-- Validacao: id_validacao, identifica cada registro de validação.
+- **Validacao:** id_validacao, identifica cada registro de validação.
 
-- Descarte: id_descarte, identifica cada processo de descarte.
+- **Descarte:** id_descarte, identifica cada processo de descarte.
 
-- Acionamento_garantia: id_acionamento_garantia, identifica cada acionamento de garantia.
+- **Acionamento_garantia:** id_acionamento_garantia, identifica cada acionamento de garantia.
 
 Nas tabelas especializadas Notebook e Celular, o identificador id_equipamento também é utilizado como chave estrangeira para manter a associação com a entidade principal Equipamento. Essa decisão permite armazenar características específicas de cada categoria sem duplicar os dados gerais dos equipamentos. Portanto, a utilização de chaves primárias numéricas proporciona identificação consistente, organização e facilidade de manutenção dos registros.
 
 -  **Justificar as chaves estrangeiras e os relacionamentos que elas implementam.**
-As chaves estrangeiras foram utilizadas para estabelecer a comunicação entre as entidades do banco de dados, garantindo que os registros relacionados mantenham a integridade referencial.
+As chaves estrangeiras (FKs) foram utilizadas para estabelecer relações entre as tabelas do banco de dados da TecNews, garantindo a integridade referencial e permitindo que as informações sejam relacionadas de maneira organizada e consistente.
 
-A estrutura foi desenvolvida para representar os processos administrativos e operacionais da TecNews, permitindo acompanhar colaboradores, patrimônio, compras, fornecedores, chamados, serviços, licenças e movimentações.
+A definição desses relacionamentos foi baseada nas informações levantadas durante a entrevista e nos processos identificados na organização, como o controle de colaboradores, departamentos, equipamentos, alocações, compras, fornecedores, licenças de software, chamados técnicos, manutenções e descartes.
 
-Os principais relacionamentos são justificados a seguir.
+Cada chave estrangeira referencia a chave primária de outra tabela, evitando que sejam registrados dados relacionados a informações inexistentes. Dessa forma, o banco de dados consegue representar os processos da empresa e manter o histórico das operações realizadas.
+Justificativa dos relacionamentos
 
-- Departamento e Colaborador
+**1. Colaborador e Departamento**
+- Chave estrangeira: Colaborador.id_departamento.
+- Relacionamento: Departamento (1) para Colaborador (N).
+Essa chave estrangeira permite identificar a qual departamento cada colaborador pertence. Conforme as informações levantadas, é necessário manter o cadastro dos funcionários e identificar sua área de atuação dentro da organização. Um departamento pode possuir vários colaboradores, enquanto cada colaborador está associado a um departamento.
 
-A tabela Colaborador possui a chave estrangeira id_departamento, que estabelece o vínculo entre os funcionários e seus respectivos departamentos.
+**2. Alocação e Colaborador**
+- Chave estrangeira: Alocacao.id_colaborador.
+- Relacionamento: Colaborador (1) para Alocação (N).
+Essa relação permite registrar quais equipamentos foram entregues a cada colaborador. A tabela Alocação mantém informações como data de entrega, data de devolução, situação e condição de devolução, possibilitando acompanhar o histórico de utilização dos equipamentos pelos funcionários.
 
-Esse relacionamento permite identificar a qual setor cada colaborador pertence e facilita consultas sobre a distribuição dos funcionários na empresa.
+**3. Alocação e Equipamento**
+- Chave estrangeira: Alocacao.id_equipamento.
+- Relacionamento: Equipamento (1) para Alocação (N).
+Essa chave estrangeira identifica qual equipamento está associado a cada registro de alocação. Sua utilização permite acompanhar as entregas, devoluções e movimentações dos equipamentos, mantendo o histórico de utilização de cada patrimônio.
 
-- Colaborador, Equipamento e Alocacao
+**4. Validação e Equipamento**
+- Chave estrangeira: Validacao.id_equipamento.
+- Relacionamento: Equipamento (1) para Validação (N).
+Essa relação permite registrar as validações realizadas sobre cada equipamento, incluindo o responsável, a data, o resultado e as observações. Também possibilita acompanhar procedimentos como verificações técnicas e sanitização dos dispositivos antes de sua destinação.
 
-A tabela Alocacao possui as chaves estrangeiras id_colaborador e id_equipamento, permitindo registrar a entrega de equipamentos aos funcionários.
+**5. Validação e Movimentação de Destinação**
+- Chave estrangeira: Validacao.id_movimentacao_destinacao.
+- Relacionamento: Movimentação de Destinação (1) para Validação (N).
+Essa chave permite relacionar uma validação ao processo de movimentação ou destinação correspondente. Dessa forma, é possível manter registros das verificações realizadas durante os procedimentos de transferência, reutilização ou descarte de equipamentos.
 
-Essa estrutura possibilita acompanhar a data de entrega, a devolução, a situação da alocação, as observações e a condição do equipamento no momento da devolução.
+**6. Movimentação de Destinação e Equipamento**
+- Chave estrangeira: Movimentacao_destinacao.id_equipamento.
+- Relacionamento: Equipamento (1) para Movimentação de Destinação (N).
+Essa relação permite registrar as movimentações realizadas com cada equipamento, identificando sua destinação, data e descrição. É importante para manter o histórico patrimonial e acompanhar o destino dos dispositivos ao longo de seu ciclo de vida.
 
-O relacionamento atende à RN01, que estabelece o controle de alocação exclusiva dos equipamentos, e à RN03, que determina a devolução dos equipamentos em caso de desligamento do colaborador.
+**7. Descarte e Equipamento**
+- Chave estrangeira: Descarte.id_equipamento.
+- Relacionamento: Equipamento (1) para Descarte (N).
+Essa chave estrangeira identifica qual equipamento está associado ao registro de descarte. Permite documentar a data, o motivo e as observações referentes à retirada definitiva de um dispositivo do inventário.
 
-- Equipamento e Item_compra
+**8. Descarte e Movimentação de Destinação**
+- Chave estrangeira: Descarte.id_movimentacao_destinacao.
+- Relacionamento: Movimentação de Destinação (1) para Descarte (N).
+Essa relação conecta o registro de descarte à movimentação de destinação correspondente, permitindo identificar o processo pelo qual o equipamento foi encaminhado para sua destinação final.
 
-A tabela Equipamento mantém o vínculo com Item_compra por meio da chave estrangeira id_item_compra.
+**9. Licença de Software e Software**
+- Chave estrangeira: Licenca_software.id_software.
+- Relacionamento: Software (1) para Licença de Software (N).
+Essa chave permite identificar a qual software pertence cada licença cadastrada. Conforme as necessidades levantadas, a organização precisa controlar os programas utilizados, suas versões, quantidades de licenças e respectivos períodos de validade.
 
-Essa associação permite identificar de qual item de aquisição determinado equipamento se originou, facilitando o rastreamento patrimonial e a consulta às informações de compra.
+**10. Atribuição de Licença e Colaborador**
+- Chave estrangeira: Licenca_atribuicao.id_colaborador.
+- Relacionamento: Colaborador (1) para Atribuição de Licença (N).
+Essa relação permite identificar quais licenças de software foram atribuídas a cada colaborador, possibilitando acompanhar a utilização dos recursos de software pelos funcionários.
 
-- Solicitação_compra e Aprovacao_compra
+**11. Atribuição de Licença e Equipamento**
+- Chave estrangeira: Licenca_atribuicao.id_equipamento.
+- Relacionamento: Equipamento (1) para Atribuição de Licença (N).
+Essa chave permite identificar em qual equipamento uma licença foi utilizada. Sua implementação contribui para o controle dos softwares instalados e para o acompanhamento dos recursos tecnológicos vinculados aos dispositivos.
 
-A tabela Aprovacao_compra possui a chave estrangeira id_solicitacao_compra, permitindo relacionar cada aprovação à solicitação correspondente.
+**12. Atribuição de Licença e Licença de Software**
+- Chave estrangeira: Licenca_atribuicao.id_licenca_software.
+- Relacionamento: Licença de Software (1) para Atribuição de Licença (N).
+Essa relação identifica qual licença cadastrada está sendo atribuída a determinado colaborador ou equipamento. Permite controlar a quantidade de licenças disponíveis e acompanhar seus períodos de utilização.
 
-Esse relacionamento possibilita acompanhar o processo de aquisição desde a solicitação inicial até a decisão de aprovação, mantendo as informações organizadas.
+**13. Solicitação de Compra e Colaborador**
+- Chave estrangeira: Solicitacao_compra.id_colaborador.
+- Relacionamento: Colaborador (1) para Solicitação de Compra (N).
+Essa chave permite identificar o colaborador responsável pela solicitação de compra. Sua utilização possibilita acompanhar a origem das solicitações, os motivos apresentados e seus respectivos status.
 
-- Solicitação_compra e Cotacao
+**14. Aprovação de Compra e Solicitação de Compra**
+- Chave estrangeira: Aprovacao_compra.id_solicitacao_compra.
+- Relacionamento: Solicitação de Compra (1) para Aprovação de Compra (N).
+Essa relação permite vincular as aprovações às solicitações de compra correspondentes. Considerando o processo levantado, as aquisições precisam passar por uma etapa de análise e aprovação antes de serem realizadas, permitindo registrar o resultado e as observações dessa etapa.
 
-A tabela Cotacao possui a chave estrangeira id_solicitacao_compra, permitindo relacionar as cotações às solicitações de aquisição correspondentes.
+**15. Cotação e Solicitação de Compra**
+- Chave estrangeira: Cotacao.id_solicitacao_compra.
+- Relacionamento: Solicitação de Compra (1) para Cotação (N).
+Essa chave permite relacionar as cotações às solicitações que deram origem à necessidade de aquisição. Como a organização realiza pesquisas de preços e condições com diferentes fornecedores, esse relacionamento permite comparar as propostas recebidas para uma mesma solicitação.
 
-Essa estrutura facilita a comparação de valores, condições comerciais e fornecedores antes da realização da compra.
+16. Cotação e Fornecedor
+- Chave estrangeira: Cotacao.id_fornecedor.
+- Relacionamento: Fornecedor (1) para Cotação (N).
+Essa relação identifica qual fornecedor apresentou cada cotação. É importante para manter o histórico das propostas comerciais, possibilitando comparar valores, condições e fornecedores antes da decisão de compra.
 
-- Fornecedor e Cotacao
+**17. Compra e Cotação**
+- Chave estrangeira: Compra.id_cotacao.
+- Relacionamento: Cotação (1) para Compra (N).
+Essa chave permite vincular o registro da compra à cotação que fundamentou a aquisição. Dessa maneira, é possível relacionar os dados da compra, como número da nota fiscal, data e valor total, à proposta comercial correspondente.
 
-A tabela Cotacao também possui a chave estrangeira id_fornecedor, identificando qual fornecedor apresentou determinada proposta comercial.
+**18. Item de Compra e Compra**
+- Chave estrangeira: Item_compra.id_compra.
+- Relacionamento: Compra (1) para Item de Compra (N).
+Essa relação permite registrar os diferentes itens que compõem uma compra, incluindo descrição, quantidade e valor unitário. É necessária porque uma aquisição pode envolver vários equipamentos ou materiais, sendo importante discriminar os itens para melhorar o controle das compras e dos valores envolvidos.
 
-Esse relacionamento permite consultar os fornecedores envolvidos nas aquisições e comparar as condições oferecidas.
+**19. Acionamento de Garantia e Equipamento**
+- Chave estrangeira: Acionamento_garantia.id_equipamento.
+- Relacionamento: Equipamento (1) para Acionamento de Garantia (N).
+Essa chave identifica o equipamento para o qual a garantia foi acionada. Permite acompanhar a data do acionamento, o protocolo, o status e o resultado do atendimento, mantendo o histórico dos procedimentos realizados durante o período de garantia.
 
-- Cotacao e Compra
+**20. Acionamento de Garantia e Fornecedor**
+- Chave estrangeira: Acionamento_garantia.id_fornecedor.
+- Relacionamento: Fornecedor (1) para Acionamento de Garantia (N).
+Essa relação identifica o fornecedor responsável pelo atendimento relacionado à garantia do equipamento. Sua utilização permite acompanhar quais fornecedores foram acionados e os resultados dos atendimentos realizados.
 
-A tabela Compra possui a chave estrangeira id_cotacao, estabelecendo o vínculo entre a aquisição realizada e a cotação correspondente.
+**21. Chamado e Colaborador**
+- Chave estrangeira: Chamado.id_colaborador.
+- Relacionamento: Colaborador (1) para Chamado (N).
+Essa chave identifica o colaborador que abriu o chamado técnico. Permite relacionar as solicitações de suporte aos funcionários que relataram os problemas, facilitando o acompanhamento dos atendimentos e das necessidades de suporte da organização.
 
-Dessa forma, é possível rastrear a origem da compra e consultar os valores e as condições comerciais que fundamentaram a aquisição.
+**22. Chamado e Atendente**
+- Chave estrangeira: Chamado.id_atendente.
+- Relacionamento: Colaborador (1) para Chamado (N).
+Essa relação identifica o colaborador responsável pelo atendimento do chamado. Permite acompanhar quem realizou o suporte técnico, contribuindo para o controle das atividades da equipe de TI e para a identificação dos responsáveis por cada atendimento.
 
-- Compra e Item_compra
+**23. Serviço e Chamado**
+- Chave estrangeira: Servico.id_chamado.
+- Relacionamento: Chamado (1) para Serviço (N).
+Essa chave permite relacionar os serviços executados aos chamados que deram origem à necessidade de atendimento. Dessa forma, é possível registrar as atividades realizadas, seus períodos, resultados e status, mantendo o histórico dos serviços prestados.
 
-A tabela Item_compra possui a chave estrangeira id_compra, permitindo registrar os diferentes itens que compõem uma aquisição.
+**24. Serviço e Fornecedor**
+- Chave estrangeira: Servico.id_fornecedor.
+- Relacionamento: Fornecedor (1) para Serviço (N).
+Essa relação permite identificar o fornecedor responsável pela execução de determinado serviço, quando houver participação de uma empresa terceirizada. É importante para acompanhar serviços externos, como atendimentos técnicos e procedimentos realizados por fornecedores especializados.
 
-Essa estrutura possibilita controlar a descrição, a quantidade e o valor unitário dos itens, evitando que uma compra precise armazenar todas essas informações em um único registro.
+**25. Serviço e Equipamento**
+- Chave estrangeira: Servico.id_equipamento.
+- Relacionamento: Equipamento (1) para Serviço (N).
+Essa chave permite identificar qual equipamento recebeu determinado serviço. Sua utilização possibilita acompanhar manutenções, reparos e demais intervenções técnicas realizadas nos dispositivos, mantendo o histórico de atendimento de cada equipamento.
 
-- Chamado, Colaborador e Servico
+**26. Celular e Equipamento**
+- Chave estrangeira: Celular.id_equipamento.
+- Relacionamento: Equipamento (1) para Celular (0 ou 1), considerando a especialização do equipamento em celular.
+Essa relação permite complementar o cadastro geral dos equipamentos com informações específicas dos dispositivos móveis, como modelo, linha telefônica e números IMEI. Dessa forma, os celulares compartilham os dados gerais da entidade Equipamento, mas possuem atributos adicionais necessários ao controle de telefonia e patrimônio.
 
-A tabela Chamado possui referências aos colaboradores envolvidos na solicitação e no atendimento.
-
-A tabela Servico possui a chave estrangeira id_chamado, permitindo relacionar os serviços executados aos chamados correspondentes.
-
-Essa estrutura possibilita acompanhar as solicitações de suporte, identificar os responsáveis e registrar os serviços realizados, incluindo datas, descrições, status e resultados.
-
-- Equipamento e Acionamento_garantia
-
-A tabela Acionamento_garantia possui as chaves estrangeiras id_equipamento e id_fornecedor.
-
-Esse relacionamento permite identificar qual equipamento apresentou a necessidade de acionamento da garantia e qual fornecedor está relacionado ao atendimento.
-
-A estrutura contribui para o acompanhamento das garantias e para a manutenção do histórico dos equipamentos.
-
-- Software e Licenca_software
-
-A tabela Licenca_software possui a chave estrangeira id_software, permitindo identificar a qual programa cada licença está vinculada.
-
-Esse relacionamento possibilita controlar a quantidade, o tipo, a validade e a situação das licenças cadastradas.
-
-- Licenca_software, Licenca_atribuicao, Colaborador e Equipamento
-
-A tabela Licenca_atribuicao possui referências à licença de software, ao colaborador e ao equipamento.
-
-Essa estrutura permite registrar a atribuição de licenças, identificando quando ocorreu o início e o término da utilização, além de manter o status da atribuição.
-
-O relacionamento atende à RN06, que determina que cada instalação de software possua uma licença válida.
-
-- Equipamento e Movimentacao_destinacao
-
-A tabela Movimentacao_destinacao possui a chave estrangeira id_equipamento, permitindo registrar as alterações de destinação dos equipamentos.
-
-Essa estrutura possibilita acompanhar as movimentações patrimoniais, registrando datas, tipos de destinação, descrições e destinos.
-
-O relacionamento contribui para o cumprimento da RN02, que estabelece a preservação do histórico de movimentações.
-
-- Movimentacao_destinacao, Validacao e Descarte
-
-As tabelas Validacao e Descarte permitem registrar informações relacionadas aos procedimentos de validação e destinação final dos equipamentos.
-
-A estrutura de validação permite documentar o responsável, a data, o resultado e as observações do procedimento. Já a tabela de descarte registra informações como data, motivo, observação e realização da sanitização.
-
-Esses registros contribuem para o atendimento da RN05, que determina a realização da sanitização dos dados antes do descarte dos equipamentos.
-  
 -  **Justificar as restrições aplicadas (unicidade, obrigatoriedade, valores permitidos etc.), citando o código da regra de negócio (RNxx) que cada restrição implementa, quando houver.**
 
- As restrições foram consideradas para garantir a consistência das informações e impedir que dados incorretos ou incompatíveis com as regras de negócio sejam armazenados.
+ As restrições aplicadas ao modelo lógico do banco de dados da empresa TecNews têm como objetivo garantir a integridade, a consistência, a segurança e a confiabilidade das informações relacionadas ao gerenciamento de equipamentos de informática, colaboradores, departamentos, compras, fornecedores, licenças de software, manutenções e descarte de ativos.
 
-As principais restrições estruturais utilizadas no modelo são:
+Cada restrição foi definida considerando as necessidades operacionais da empresa e as regras de negócio estabelecidas para o sistema.
 
-- Chave primária (PRIMARY KEY)
+**1. Restrições de obrigatoriedade (NOT NULL)**
 
-A restrição PRIMARY KEY garante a identificação individual de cada registro, impedindo a repetição de identificadores e assegurando que cada entidade possua uma referência própria.
+Foram definidas restrições de obrigatoriedade para os atributos considerados essenciais ao funcionamento do sistema. Dessa forma, informações importantes não podem ser cadastradas como nulas.
+- Na tabela COLABORADOR, os campos de identificação e nome são obrigatórios, garantindo que cada funcionário possua um cadastro válido.
+- Na tabela EQUIPAMENTO, os dados de identificação do equipamento e sua situação devem ser preenchidos para permitir o controle adequado do inventário.
+- Na tabela COMPRA, a data da compra, o fornecedor responsável e o colaborador que realizou a operação devem ser informados.
+- Na tabela ITEM_COMPRA, a descrição, a quantidade e o valor unitário são obrigatórios para identificar corretamente os itens adquiridos.
+- Na tabela FORNECEDOR, o nome e os dados necessários à identificação do fornecedor devem ser preenchidos.
+- Nas tabelas de relacionamento, as chaves estrangeiras obrigatórias garantem que os registros estejam associados às respectivas entidades.
+Essas restrições evitam cadastros incompletos e contribuem para a confiabilidade das informações utilizadas pela equipe de TI.
 
-- Chave estrangeira (FOREIGN KEY)
+**2. Restrições de unicidade (UNIQUE)**
 
-A restrição FOREIGN KEY garante a integridade dos relacionamentos, impedindo que uma tabela faça referência a registros inexistentes em outra tabela.
+As restrições de unicidade foram consideradas para impedir o cadastramento duplicado de informações que identificam exclusivamente determinados registros.
+- TABELA COLABORADOR: o endereço de e-mail deve ser único, evitando que dois funcionários utilizem o mesmo endereço para identificação no sistema.
+- TABELA FORNECEDOR: o CNPJ deve ser único, impedindo o cadastro duplicado de uma mesma empresa fornecedora.
+- TABELA EQUIPAMENTO: o número de série e o número de patrimônio devem ser únicos, permitindo identificar cada equipamento individualmente e evitando duplicidade no inventário.
+- TABELA COMPRA: o número da nota fiscal deve ser controlado para evitar o registro duplicado de uma mesma operação de compra, considerando a identificação da nota fiscal e do fornecedor.
+Essas restrições contribuem para a organização do inventário e evitam inconsistências nos registros administrativos e patrimoniais.
 
-Essa restrição é fundamental para manter a consistência entre colaboradores, departamentos, equipamentos, compras, fornecedores, licenças e demais entidades.
+**3. Restrições de integridade referencial (FOREIGN KEY)**
 
-- Obrigatoriedade (NOT NULL)
+As chaves estrangeiras garantem que os relacionamentos entre as tabelas respeitem a estrutura definida no modelo lógico.
+- TABELA EQUIPAMENTO: possui relacionamento com COLABORADOR, permitindo identificar o funcionário responsável pela utilização do equipamento.
+- TABELA COMPRA: possui relacionamento com FORNECEDOR e COLABORADOR, identificando quem forneceu os produtos e qual funcionário foi responsável pela compra.
+- TABELA ITEM_COMPRA: está relacionada à tabela COMPRA, permitindo identificar quais produtos foram adquiridos em cada operação.
+- TABELA EQUIPAMENTO: possui relacionamento com ITEM_COMPRA, permitindo rastrear a origem de aquisição dos equipamentos.
+- TABELA VALIDACAO: está relacionada à tabela EQUIPAMENTO, permitindo manter o histórico de verificações realizadas.
+- TABELAS ACIONAMENTO_GARANTIA, LICENCA_SOFTWARE, LICENCA_ATRIBUICAO, MOVIMENTACAO_DESTINACAO e DESCARTE: utilizam relacionamentos para garantir que as operações estejam associadas aos respectivos equipamentos, fornecedores ou registros de licenciamento.
+Essas restrições impedem que sejam inseridas referências a registros inexistentes e mantêm a consistência dos dados.
 
-Os campos considerados essenciais para o funcionamento do sistema devem possuir preenchimento obrigatório.
+**4. Restrições relacionadas às regras de negócio (RN)**
 
-Essa restrição é importante principalmente para identificadores, informações fundamentais de cadastro e referências necessárias para estabelecer os relacionamentos.
+ - Alocação exclusiva	Um equipamento não pode estar alocado simultaneamente a mais de um colaborador. A restrição deve impedir duas alocações ativas para o --mesmo equipamento.
+- RN02 – Histórico de validação	Os registros de validação devem ser preservados permanentemente, impedindo alterações ou exclusões indevidas do histórico de verificações dos equipamentos.
+- RN03 – Devolução no desligamento	Quando um colaborador é desligado da empresa, os equipamentos sob sua responsabilidade devem ser devolvidos e ter sua alocação encerrada.
+- RN04 – Garantia e manutenção	Os acionamentos de garantia e os registros de manutenção devem estar associados ao equipamento correspondente e ao fornecedor responsável, permitindo acompanhar o histórico de atendimento.
+- RN05 – Descarte com sanitização	Um equipamento somente poderá ser descartado após a realização e o registro do procedimento de sanitização, garantindo que os dados armazenados não sejam expostos.
+- RN06 – Controle de licenças de software	A instalação de um software deve possuir uma licença válida, compatível com o equipamento e respeitar o limite de instalações autorizado.
 
-- Unicidade (UNIQUE)
+**5. Restrições de domínio e valores permitidos (CHECK)**
 
-A restrição UNIQUE pode ser aplicada aos atributos que precisam apresentar valores exclusivos, como o e-mail corporativo dos colaboradores, desde que essa exigência esteja definida nas regras de negócio.
+- TABELA EQUIPAMENTO: o campo situação deve aceitar somente estados previamente definidos, como disponível, alocado, em manutenção ou descartado.
+- TABELA ITEM_COMPRA: a quantidade deve ser um número inteiro maior que zero, pois não é possível realizar uma compra com quantidade negativa ou igual a zero.
+- TABELA ITEM_COMPRA: o valor unitário deve ser maior que zero, evitando registros de valores inválidos.
+- TABELA COMPRA: o valor total não pode ser negativo.
+- TABELA LICENCA_SOFTWARE: devem ser controladas as informações referentes à validade, compatibilidade e quantidade de instalações autorizadas.
+- TABELA DESCARTE: o registro deve respeitar a condição de realização prévia da sanitização, conforme estabelecido pela RN05.
+Essas restrições podem ser implementadas por meio de comandos CHECK, validações adicionais ou mecanismos específicos do banco de dados.
 
-Essa medida evita cadastros duplicados e facilita a identificação dos registros.
+**6. Restrições de preservação e segurança das informações**
 
-- Domínio e valores permitidos
+O sistema também deve garantir a preservação dos registros históricos e impedir operações que comprometam a integridade das informações.
 
-Os campos que representam situações, categorias, prioridades, resultados e tipos de movimentação devem utilizar valores padronizados.
-
-Essa padronização permite manter a consistência dos dados e facilita a realização de consultas e relatórios.
-
-As regras de negócio RN01 a RN06 também exigem controles específicos:
-
-RN01 – Alocação exclusiva: deve existir controle para impedir que um mesmo equipamento possua mais de uma alocação ativa simultaneamente.
-
-RN02 – Histórico permanente: os registros de movimentação devem ser preservados, evitando a perda do histórico patrimonial.
-
-RN03 – Devolução no desligamento: o desligamento do colaborador deve ser acompanhado da devolução dos equipamentos sob sua responsabilidade.
-
-RN04 – Garantia, manutenção e fornecedor: devem ser mantidas as informações necessárias para acompanhar garantias, manutenções e fornecedores relacionados aos equipamentos.
-
-RN05 – Sanitização antes do descarte: o processo de descarte deve exigir a confirmação da sanitização dos dados do equipamento.
-
-RN06 – Licença válida por instalação: deve existir validação para garantir que cada instalação de software esteja associada a uma licença válida.
-
-É importante destacar que o modelo lógico identifica as chaves primárias e estrangeiras, mas não apresenta, por si só, todas as restrições de implementação. Regras como exclusividade de alocação, obrigatoriedade de sanitização e validade de licenças podem exigir restrições adicionais, gatilhos ou validações na aplicação.
+- Os registros históricos de validação não devem ser excluídos ou modificados indevidamente, conforme a RN02.
+- As alocações devem manter seu histórico, permitindo identificar os colaboradores que utilizaram determinado equipamento, conforme a RN01.
+- As movimentações e destinações devem preservar o histórico de utilização e transferência dos ativos.
+- Os registros de compras devem permitir rastrear a origem dos equipamentos e identificar os responsáveis pelas aquisições.
+- Os registros de descarte devem manter as informações necessárias para comprovar que o procedimento foi realizado corretamente, conforme a RN05.
 
 ## **1.6 Proposta de Arquitetura Analítica para BI e IA**
 
