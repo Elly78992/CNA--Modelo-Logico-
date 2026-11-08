@@ -93,8 +93,7 @@ A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para r
 - **Quem:** A entrevista foi realizada com Rolando Silveira, representante da empresa TecNews.
   
 - **Quando e onde:** Foi realizada 18/09/26, através do Google Meet. Devido que o representante da empresa mora em Portugal, as informações foram obtidas através do entrevistado de forma remota.  
-- **Comprovação:**
-
+- **Comprovação:** ![Entrevista](Entrevista/entrevista_page-0001.jpg)  ![Entrevista](Entrevista/entrevista_page-0002.jpg)
 - **O que foi levantado:**
   [Levantamento das informações](levantamento/levantamento.md)
 
