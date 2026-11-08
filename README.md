@@ -167,7 +167,7 @@ Entre as regras identificadas estão a alocação exclusiva de equipamentos, a o
   Não foram definidas regras detalhadas para o fluxo de atendimento técnico, priorização de chamados, distribuição de técnicos, controle de SLA e execução de serviços de manutenção, pois esses procedimentos pertencem ao sistema externo de suporte da TecNews. Também não foram estabelecidas regras específicas para aprovação financeira de compras, negociação com fornecedores ou procedimentos administrativos de descarte que não tenham sido confirmados no levantamento realizado.
 
 ## **Notação do DER conceitual**
-
+![Der conceitual](Modelo%20L%C3%B3gico%20e%20Conceitual/modelo_conceitual.jpg)
 **Software Utilizado:** BrModelo
 
 |Apontamento da correção da E1|O que mudou no trabalho|Por quê|
@@ -515,6 +515,7 @@ O sistema também deve garantir a preservação dos registros históricos e impe
 
 
 ## **2-Modelo Lógico Relacional**
+![Modelo Logico](Modelo%20L%C3%B3gico%20e%20Conceitual/modelo_logico.jpg)
 
 ## **3-Script SQL Completo**
 
