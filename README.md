@@ -75,7 +75,6 @@ Além disso, a organização necessita acompanhar informações relacionadas a:
 - Suporte técnico: registro dos chamados, serviços realizados, responsáveis e resultados dos atendimentos.
 - Licenças de software: controle dos programas utilizados, quantidade de licenças, validade e atribuições.
 - Movimentação e descarte: acompanhamento das transferências, alterações de destino, descarte e aproveitamento de componentes.
-- 
 - **Escopo do sistema:**
   O sistema proposto tem como objetivo organizar e centralizar as informações relacionadas ao inventário de equipamentos tecnológicos utilizados pelos colaboradores da CNA. A solução contempla o cadastro de colaboradores, departamentos, equipamentos, características técnicas, identificação patrimonial, garantias, situação dos dispositivos, atribuições, devoluções e histórico de alterações.
 Também são considerados os registros relacionados a fornecedores, aquisições e licenças de software, conforme as entidades previstas no modelo de dados.
@@ -91,10 +90,9 @@ A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para r
 
 ## **Relato da entrevista**
 
-- **Quem:**
+- **Quem:** A entrevista foi realizada com Rolando Silveira, representante da empresa TecNews.
   
-- **Quando e onde:**
-
+- **Quando e onde:** Foi realizada 18/09/26, através do Google Meet. Devido que o representante da empresa mora em Portugal, as informações foram obtidas através do entrevistado de forma remota.  
 - **Comprovação:**
 
 - **O que foi levantado:**
@@ -175,9 +173,13 @@ Entre as regras identificadas estão a alocação exclusiva de equipamentos, a o
 
 |Apontamento da correção da E1|O que mudou no trabalho|Por quê|
 |----------------------|---|------------------|
-|                      |   |                  |
-|                      |    |                |
-|                      |   |                 |
+|O modelo precisava representar melhor os processos da organização, e não apenas o controle básico dos equipamentos. |O DER foi ampliado para contemplar aquisição, utilização, manutenção, garantia, movimentação e descarte de equipamentos.| Para representar de forma mais completa o ciclo de vida dos equipamentos e atender aos requisitos levantados.|
+|Necessidade de melhorar o controle de compras e aquisições de equipamentos. |Foram incluídas as entidades Solitacao_compra, Aprovacao_compra, Cotacao, Compra e Item_compra, relacionadas ao Fornecedor. |Para acompanhar solicitações, aprovações, cotações, compras e itens adquiridos, mantendo o histórico das operações.|
+|Necessidade de melhorar o controle dos colaboradores e equipamentos vinculados. |Foram organizadas as entidades Colaborador, Departamento, Equipamento e Alocacao, incluindo entrega, devolução e situação dos equipamentos. |Para identificar os responsáveis pelos equipamentos e manter o histórico de utilização, entrega e devolução.|
+|Necessidade de representar o controle de fornecedores e serviços realizados. |Foram estruturadas as entidades Fornecedor, Chamado e Servico, relacionando atendimentos, colaboradores, equipamentos e fornecedores. |Para acompanhar chamados técnicos, serviços executados e atendimentos realizados por empresas terceirizadas.|
+|Necessidade de controlar as licenças dos softwares utilizados pela organização. |Foram incluídas as entidades Software, Licenca_software e Licenca_atribuicao. |Para registrar os softwares, controlar quantidade e validade das licenças e identificar suas atribuições.|  
+|Necessidade de melhorar o acompanhamento das movimentações e da destinação dos equipamentos. |Foram estruturadas as entidades Movimentacao_destinacao, Validacao e Descarte. |Para registrar movimentações patrimoniais, validações e informações referentes ao descarte dos equipamentos.|      
+|O modelo precisava apresentar melhor organização e identificação dos relacionamentos entre as entidades. |O DER foi reorganizado, com revisão dos relacionamentos, cardinalidades e identificação das chaves primárias e estrangeiras na conversão para o modelo lógico. |Para facilitar a compreensão da estrutura do banco, reduzir ambiguidades e garantir a integridade das informações.|          
 
 ## **1.2 Conversão do Modelo Conceitual para o Modelo Lógico**
 
@@ -255,7 +257,7 @@ Essa escolha evita que informações descritivas, como nomes, modelos, números 
 
 **No modelo, cada entidade possui sua própria chave primária, conforme sua finalidade:**
 
--**Departamento:** id_departamento, identifica individualmente cada departamento da empresa.
+- **Departamento:** id_departamento, identifica individualmente cada departamento da empresa.
 
 - **Colaborador:** id_colaborador, identifica cada funcionário cadastrado.
 
