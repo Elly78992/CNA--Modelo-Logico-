@@ -94,8 +94,10 @@ A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para r
   
 - **Quando e onde:** Foi realizada 18/09/26, através do Google Meet. Devido que o representante da empresa mora em Portugal, as informações foram obtidas através do entrevistado de forma remota.  
 - **Comprovação:** ![Entrevista](Entrevista/entrevista_page-0001.jpg)  ![Entrevista](Entrevista/entrevista_page-0002.jpg)
-- **O que foi levantado:**
-  [Levantamento das informações](levantamento/levantamento.md)
+- **O que foi levantado:**  O levantamento foi realizado por meio de duas entrevistas com representante da organização TecNews, permitindo compreender o funcionamento do controle de equipamentos e das informações de TI. Foi identificado que a organização possui mais de 340 equipamentos ativos, entre notebooks e dispositivos móveis, e utiliza um inventário para registrar informações sobre equipamentos, colaboradores, licenciamento, garantias, aquisições e manutenção.
+A primeira entrevista identificou dificuldades relacionadas à organização, duplicidade e integração das informações. A segunda complementou esses dados, detalhando o processo de solicitação, aprovação, compra, cadastro, manutenção e descarte dos equipamentos.
+Como principal melhoria futura, foi identificada a necessidade de integrar o sistema de compras ao inventário de TI, possibilitando o registro automático dos equipamentos a partir da emissão da nota fiscal.
+O levantamento completo, com a descrição dos processos, informações coletadas e comparação entre as entrevistas, está em [Levantamento das informações](levantamento/levantamento.md)
 
 ## **Processos de Negócios:** 
 O principal processo identificado na CNA consiste no levantamento, registro e atualização das informações referentes aos equipamentos tecnológicos utilizados pelos colaboradores, abrangendo notebooks e celulares.
