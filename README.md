@@ -203,12 +203,204 @@ No contexto da CNA, essa organização é importante porque o inventário reúne
 ## **1.5 Justificativas Técnicas das Decisões**
 
 - **Justificar as chaves primárias escolhidas.**
+As chaves primárias foram definidas para identificar exclusivamente cada registro armazenado nas tabelas do banco de dados da TecNews. Para isso, foi adotado o tipo de dado INT, permitindo a utilização de identificadores numéricos próprios para cada entidade.
+
+Essa escolha evita que informações descritivas, como nomes, modelos, números de série ou e-mails, sejam utilizadas como identificadores principais, uma vez que esses dados podem sofrer alterações ao longo do tempo.
+
+**No modelo, cada entidade possui sua própria chave primária, conforme sua finalidade:**
+
+- Departamento: id_departamento, identifica individualmente cada departamento da empresa.
+
+- Colaborador: id_colaborador, identifica cada funcionário cadastrado.
+
+- Equipamento: id_equipamento, identifica cada equipamento pertencente ao patrimônio tecnológico.
+
+- Alocacao: id_alocacao, identifica cada registro de entrega e devolução de equipamentos.
+
+- Chamado: id_chamado, identifica individualmente as solicitações de suporte.
+
+- Servico: id_servico, identifica cada serviço executado.
+
+- Fornecedor: id_fornecedor, identifica cada fornecedor cadastrado.
+
+- Solicitacao_compra: id_solicitacao_compra, identifica cada solicitação de aquisição.
+
+- Aprovacao_compra: id_aprovacao, identifica cada registro de aprovação de compra.
+
+- Cotacao: id_cotacao, identifica cada cotação realizada.
+
+- Compra: id_compra, identifica cada aquisição efetuada.
+
+- Item_compra: id_item_compra, identifica individualmente cada item de uma compra.
+
+- Software: id_software, identifica os programas cadastrados.
+
+- Licenca_software: id_licenca_software, identifica cada licença de software registrada.
+
+- Licenca_atribuicao: id_licenca_atribuicao, identifica cada atribuição de licença.
+
+- Movimentacao_destinacao: id_movimentacao_destinacao, identifica cada movimentação ou alteração de destinação de um equipamento.
+
+- Validacao: id_validacao, identifica cada registro de validação.
+
+- Descarte: id_descarte, identifica cada processo de descarte.
+
+- Acionamento_garantia: id_acionamento_garantia, identifica cada acionamento de garantia.
+
+Nas tabelas especializadas Notebook e Celular, o identificador id_equipamento também é utilizado como chave estrangeira para manter a associação com a entidade principal Equipamento. Essa decisão permite armazenar características específicas de cada categoria sem duplicar os dados gerais dos equipamentos. Portanto, a utilização de chaves primárias numéricas proporciona identificação consistente, organização e facilidade de manutenção dos registros.
 
 -  **Justificar as chaves estrangeiras e os relacionamentos que elas implementam.**
+As chaves estrangeiras foram utilizadas para estabelecer a comunicação entre as entidades do banco de dados, garantindo que os registros relacionados mantenham a integridade referencial.
 
+A estrutura foi desenvolvida para representar os processos administrativos e operacionais da TecNews, permitindo acompanhar colaboradores, patrimônio, compras, fornecedores, chamados, serviços, licenças e movimentações.
+
+Os principais relacionamentos são justificados a seguir.
+
+- Departamento e Colaborador
+
+A tabela Colaborador possui a chave estrangeira id_departamento, que estabelece o vínculo entre os funcionários e seus respectivos departamentos.
+
+Esse relacionamento permite identificar a qual setor cada colaborador pertence e facilita consultas sobre a distribuição dos funcionários na empresa.
+
+- Colaborador, Equipamento e Alocacao
+
+A tabela Alocacao possui as chaves estrangeiras id_colaborador e id_equipamento, permitindo registrar a entrega de equipamentos aos funcionários.
+
+Essa estrutura possibilita acompanhar a data de entrega, a devolução, a situação da alocação, as observações e a condição do equipamento no momento da devolução.
+
+O relacionamento atende à RN01, que estabelece o controle de alocação exclusiva dos equipamentos, e à RN03, que determina a devolução dos equipamentos em caso de desligamento do colaborador.
+
+- Equipamento e Item_compra
+
+A tabela Equipamento mantém o vínculo com Item_compra por meio da chave estrangeira id_item_compra.
+
+Essa associação permite identificar de qual item de aquisição determinado equipamento se originou, facilitando o rastreamento patrimonial e a consulta às informações de compra.
+
+- Solicitação_compra e Aprovacao_compra
+
+A tabela Aprovacao_compra possui a chave estrangeira id_solicitacao_compra, permitindo relacionar cada aprovação à solicitação correspondente.
+
+Esse relacionamento possibilita acompanhar o processo de aquisição desde a solicitação inicial até a decisão de aprovação, mantendo as informações organizadas.
+
+- Solicitação_compra e Cotacao
+
+A tabela Cotacao possui a chave estrangeira id_solicitacao_compra, permitindo relacionar as cotações às solicitações de aquisição correspondentes.
+
+Essa estrutura facilita a comparação de valores, condições comerciais e fornecedores antes da realização da compra.
+
+- Fornecedor e Cotacao
+
+A tabela Cotacao também possui a chave estrangeira id_fornecedor, identificando qual fornecedor apresentou determinada proposta comercial.
+
+Esse relacionamento permite consultar os fornecedores envolvidos nas aquisições e comparar as condições oferecidas.
+
+- Cotacao e Compra
+
+A tabela Compra possui a chave estrangeira id_cotacao, estabelecendo o vínculo entre a aquisição realizada e a cotação correspondente.
+
+Dessa forma, é possível rastrear a origem da compra e consultar os valores e as condições comerciais que fundamentaram a aquisição.
+
+- Compra e Item_compra
+
+A tabela Item_compra possui a chave estrangeira id_compra, permitindo registrar os diferentes itens que compõem uma aquisição.
+
+Essa estrutura possibilita controlar a descrição, a quantidade e o valor unitário dos itens, evitando que uma compra precise armazenar todas essas informações em um único registro.
+
+- Chamado, Colaborador e Servico
+
+A tabela Chamado possui referências aos colaboradores envolvidos na solicitação e no atendimento.
+
+A tabela Servico possui a chave estrangeira id_chamado, permitindo relacionar os serviços executados aos chamados correspondentes.
+
+Essa estrutura possibilita acompanhar as solicitações de suporte, identificar os responsáveis e registrar os serviços realizados, incluindo datas, descrições, status e resultados.
+
+- Equipamento e Acionamento_garantia
+
+A tabela Acionamento_garantia possui as chaves estrangeiras id_equipamento e id_fornecedor.
+
+Esse relacionamento permite identificar qual equipamento apresentou a necessidade de acionamento da garantia e qual fornecedor está relacionado ao atendimento.
+
+A estrutura contribui para o acompanhamento das garantias e para a manutenção do histórico dos equipamentos.
+
+- Software e Licenca_software
+
+A tabela Licenca_software possui a chave estrangeira id_software, permitindo identificar a qual programa cada licença está vinculada.
+
+Esse relacionamento possibilita controlar a quantidade, o tipo, a validade e a situação das licenças cadastradas.
+
+- Licenca_software, Licenca_atribuicao, Colaborador e Equipamento
+
+A tabela Licenca_atribuicao possui referências à licença de software, ao colaborador e ao equipamento.
+
+Essa estrutura permite registrar a atribuição de licenças, identificando quando ocorreu o início e o término da utilização, além de manter o status da atribuição.
+
+O relacionamento atende à RN06, que determina que cada instalação de software possua uma licença válida.
+
+- Equipamento e Movimentacao_destinacao
+
+A tabela Movimentacao_destinacao possui a chave estrangeira id_equipamento, permitindo registrar as alterações de destinação dos equipamentos.
+
+Essa estrutura possibilita acompanhar as movimentações patrimoniais, registrando datas, tipos de destinação, descrições e destinos.
+
+O relacionamento contribui para o cumprimento da RN02, que estabelece a preservação do histórico de movimentações.
+
+- Movimentacao_destinacao, Validacao e Descarte
+
+As tabelas Validacao e Descarte permitem registrar informações relacionadas aos procedimentos de validação e destinação final dos equipamentos.
+
+A estrutura de validação permite documentar o responsável, a data, o resultado e as observações do procedimento. Já a tabela de descarte registra informações como data, motivo, observação e realização da sanitização.
+
+Esses registros contribuem para o atendimento da RN05, que determina a realização da sanitização dos dados antes do descarte dos equipamentos.
+  
 -  **Justificar as restrições aplicadas (unicidade, obrigatoriedade, valores permitidos etc.), citando o código da regra de negócio (RNxx) que cada restrição implementa, quando houver.**
 
--  **Justificar decisões arquiteturais gerais do modelo.**
+ As restrições foram consideradas para garantir a consistência das informações e impedir que dados incorretos ou incompatíveis com as regras de negócio sejam armazenados.
+
+As principais restrições estruturais utilizadas no modelo são:
+
+- Chave primária (PRIMARY KEY)
+
+A restrição PRIMARY KEY garante a identificação individual de cada registro, impedindo a repetição de identificadores e assegurando que cada entidade possua uma referência própria.
+
+- Chave estrangeira (FOREIGN KEY)
+
+A restrição FOREIGN KEY garante a integridade dos relacionamentos, impedindo que uma tabela faça referência a registros inexistentes em outra tabela.
+
+Essa restrição é fundamental para manter a consistência entre colaboradores, departamentos, equipamentos, compras, fornecedores, licenças e demais entidades.
+
+- Obrigatoriedade (NOT NULL)
+
+Os campos considerados essenciais para o funcionamento do sistema devem possuir preenchimento obrigatório.
+
+Essa restrição é importante principalmente para identificadores, informações fundamentais de cadastro e referências necessárias para estabelecer os relacionamentos.
+
+- Unicidade (UNIQUE)
+
+A restrição UNIQUE pode ser aplicada aos atributos que precisam apresentar valores exclusivos, como o e-mail corporativo dos colaboradores, desde que essa exigência esteja definida nas regras de negócio.
+
+Essa medida evita cadastros duplicados e facilita a identificação dos registros.
+
+- Domínio e valores permitidos
+
+Os campos que representam situações, categorias, prioridades, resultados e tipos de movimentação devem utilizar valores padronizados.
+
+Essa padronização permite manter a consistência dos dados e facilita a realização de consultas e relatórios.
+
+As regras de negócio RN01 a RN06 também exigem controles específicos:
+
+RN01 – Alocação exclusiva: deve existir controle para impedir que um mesmo equipamento possua mais de uma alocação ativa simultaneamente.
+
+RN02 – Histórico permanente: os registros de movimentação devem ser preservados, evitando a perda do histórico patrimonial.
+
+RN03 – Devolução no desligamento: o desligamento do colaborador deve ser acompanhado da devolução dos equipamentos sob sua responsabilidade.
+
+RN04 – Garantia, manutenção e fornecedor: devem ser mantidas as informações necessárias para acompanhar garantias, manutenções e fornecedores relacionados aos equipamentos.
+
+RN05 – Sanitização antes do descarte: o processo de descarte deve exigir a confirmação da sanitização dos dados do equipamento.
+
+RN06 – Licença válida por instalação: deve existir validação para garantir que cada instalação de software esteja associada a uma licença válida.
+
+É importante destacar que o modelo lógico identifica as chaves primárias e estrangeiras, mas não apresenta, por si só, todas as restrições de implementação. Regras como exclusividade de alocação, obrigatoriedade de sanitização e validade de licenças podem exigir restrições adicionais, gatilhos ou validações na aplicação.
 
 ## **1.6 Proposta de Arquitetura Analítica para BI e IA**
 
