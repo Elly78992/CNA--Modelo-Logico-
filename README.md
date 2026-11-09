@@ -659,6 +659,16 @@ A integração futura com ferramentas de Business Intelligence e Inteligência A
 Assim, o modelo desenvolvido estabelece uma base de dados organizada que poderá evoluir para uma estrutura analítica mais avançada, acompanhando o crescimento e as necessidades da TecNews.
 |Problema ou KPI|Tabelas envolvidas|Consulta no script|
 |----------------------|---|------------------|
+|Quantidade de equipamentos por situação| Equipamento| G01|
+|Quantidade de compras e total gasto por fornecedor| Compra, Cotacao, Fornecedor|G02|
+|Controle de licenças de software e respectivas validades| Licenca_software, Software| G03|
+|Equipamentos alocados aos colaboradores| Alocacao, Colaborador, Equipamento|G04|
+|Compras, fornecedores e itens adquiridos| Compra, Cotacao, Fornecedor, Item_compra|G05|
+|Chamados por categoria, prioridade e status| Chamado, Colaborador| G06|
+|Histórico de movimentações e validação dos equipamentos| Equipamentos, Movimentacao_destinacao, Validacao| G07|
+|Histórico dos equipamentos descartados e sua destinação| Descarte, Equipamento, Movimentacao_destinacao| G08|
+|Acionamento de garantia por equipamento e fornecedor| Acionamento_garantia, Equipamento,Fornecedor| G09|
+|Histórico de chamados, serviços e fornecedores| Chamado, Colaborador, Servico, Fornecedor| G10|
 
 
 ## **2-Modelo Lógico Relacional**
