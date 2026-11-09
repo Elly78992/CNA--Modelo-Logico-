@@ -558,6 +558,48 @@ Permitiria acompanhar os equipamentos encaminhados para manutenção, os acionam
 Dessa forma, os dashboards possibilitariam uma visualização mais clara das informações, reduzindo a necessidade de consultas manuais e contribuindo para decisões baseadas em dados.
 
 - **Aplicações analíticas e de IA: como o modelo pode alimentar análises preditivas, recomendações etc.**
+A proposta de arquitetura analítica para Business Intelligence (BI) e Inteligência Artificial (IA) tem como objetivo transformar os dados armazenados no banco de dados da TecNews em informações estratégicas que auxiliem a gestão da empresa na tomada de decisões. 
+
+A estrutura desenvolvida permite reunir informações relacionadas ao patrimônio tecnológico, aos colaboradores, aos fornecedores, às aquisições, às licenças de software, aos chamados técnicos, às manutenções e ao descarte de equipamentos. A partir desses dados, a empresa poderá acompanhar seu desempenho operacional, identificar necessidades, controlar recursos e planejar melhorias.
+## 1.6.1 Informações estratégicas
+
+O banco de dados da TecNews permite organizar informações importantes para diferentes áreas da gestão empresarial.
+
+Entre as principais informações estratégicas que podem ser extraídas, destacam-se:
+
+- **Gestão de equipamentos:** identificação dos equipamentos disponíveis, em uso ou descartados, permitindo acompanhar o patrimônio tecnológico e planejar substituições.
+- **Controle de colaboradores:** acompanhamento dos colaboradores, seus departamentos e dos equipamentos e licenças de software atribuídos a cada pessoa.
+- **Gestão de fornecedores:** análise dos fornecedores cadastrados, dos serviços prestados, das cotações recebidas e das compras realizadas.
+- **Controle de compras:** acompanhamento das solicitações, aprovações, cotações, aquisições e valores gastos pela empresa.
+- **Gestão de licenças de software:** monitoramento da quantidade de licenças disponíveis, das atribuições realizadas e das respectivas datas de validade.
+- **Acompanhamento de chamados técnicos:** identificação dos tipos de problemas mais frequentes, prioridades, situações dos chamados e atendimentos realizados.
+- **Controle de manutenção e garantia:** acompanhamento dos serviços executados, dos acionamentos de garantia e dos resultados obtidos.
+- **Auditoria e descarte:** consulta ao histórico de movimentação, validação, sanitização e destinação dos equipamentos.
+
+Essas informações possibilitam que a gestão tenha uma visão mais ampla dos recursos tecnológicos e das atividades da empresa, contribuindo para o planejamento financeiro, operacional e administrativo.
+
+## 1.6.2 Indicadores e métricas gerenciais propostos (KPIs)
+
+Os Indicadores-Chave de Desempenho (KPIs) são métricas utilizadas para acompanhar resultados, identificar problemas e avaliar o desempenho de uma organização.
+
+Com base nas tabelas e nos relacionamentos desenvolvidos no banco de dados, são propostos os seguintes indicadores:
+
+| Indicador (KPI) | Finalidade gerencial | Dados utilizados |
+|---|---|---|
+| Quantidade de equipamentos por situação | Identificar equipamentos em uso, em estoque ou descartados. | Equipamento |
+| Total de compras realizadas | Acompanhar o volume de aquisições da empresa. | Compra |
+| Valor total gasto por fornecedor | Comparar os gastos e apoiar a escolha de fornecedores. | Compra, Cotacao e Fornecedor |
+| Quantidade de equipamentos por colaborador | Acompanhar a distribuição dos recursos tecnológicos. | Alocacao e Colaborador |
+| Licenças de software próximas do vencimento | Antecipar renovações e evitar interrupções de utilização. | Licenca_software e Software |
+| Chamados por categoria e prioridade | Identificar os problemas técnicos mais frequentes. | Chamado |
+| Chamados em aberto e em andamento | Acompanhar a demanda de suporte técnico. | Chamado |
+| Quantidade de serviços executados | Monitorar as atividades de manutenção e suporte. | Servico |
+| Equipamentos descartados | Acompanhar a quantidade e os motivos dos descartes. | Descarte e Equipamento |
+| Acionamentos de garantia | Monitorar ocorrências e resultados dos atendimentos em garantia. | Acionamento_garantia |
+
+Além desses indicadores, a empresa poderá acompanhar métricas complementares, como tempo médio de atendimento dos chamados, tempo médio de resolução de problemas, custo de manutenção por equipamento e percentual de chamados concluídos.
+
+Para calcular essas métricas com maior precisão, será importante manter os registros de datas, horários, valores e situações sempre atualizados.
 
 |Problema ou KPI|Tabelas envolvidas|Consulta no script|
 |----------------------|---|------------------|
