@@ -505,10 +505,57 @@ O sistema também deve garantir a preservação dos registros históricos e impe
 ## **1.6 Proposta de Arquitetura Analítica para BI e IA**
 
 - **Informações estratégicas**
+  O banco de dados da TecNews permite organizar informações importantes para diferentes áreas da gestão empresarial.
+
+Entre as principais informações estratégicas que podem ser extraídas, destacam-se:
+
+- Gestão de equipamentos: identificação dos equipamentos disponíveis, em uso ou descartados, permitindo acompanhar o patrimônio tecnológico e planejar substituições.
+
+- Controle de colaboradores: acompanhamento dos colaboradores, seus departamentos e dos equipamentos e licenças de software atribuídos a cada pessoa.
+
+- Gestão de fornecedores: análise dos fornecedores cadastrados, dos serviços prestados, das cotações recebidas e das compras realizadas.
+
+- Controle de compras: acompanhamento das solicitações, aprovações, cotações, aquisições e valores gastos pela empresa.
+
+- Gestão de licenças de software: monitoramento da quantidade de licenças disponíveis, das atribuições realizadas e das respectivas datas de validade.
+
+- Acompanhamento de chamados técnicos: identificação dos tipos de problemas mais frequentes, prioridades, situações dos chamados e atendimentos realizados.
+
+- Controle de manutenção e garantia: acompanhamento dos serviços executados, dos acionamentos de garantia e dos resultados obtidos.
+
+- Auditoria e descarte: consulta ao histórico de movimentação, validação, sanitização e destinação dos equipamentos.
 
 - **Indicadores e métricas gerenciais propostos (KPIs).**
+  
 
 - **Potencial dos dados para BI: como a estrutura apoia dashboards/relatórios.**
+  A estrutura do banco de dados permite a integração futura com ferramentas de Business Intelligence, como Microsoft Power BI, possibilitando transformar os registros armazenados em gráficos, indicadores, tabelas e painéis interativos.
+
+Os relacionamentos entre as 20 tabelas permitem reunir informações de diferentes áreas em uma mesma análise, facilitando a identificação de padrões e o acompanhamento dos resultados.
+
+São propostos os seguintes dashboards:
+
+**1. Dashboard de patrimônio e equipamentos**
+
+Apresentaria a quantidade de equipamentos por situação, fabricante, modelo e tipo, além da distribuição dos equipamentos entre os colaboradores. Também permitiria acompanhar o histórico de movimentações e os equipamentos descartados.
+
+**2. Dashboard financeiro e de compras**
+
+Apresentaria os valores das compras realizadas, os gastos por fornecedor, a quantidade de solicitações aprovadas e pendentes e a comparação entre as cotações recebidas. Essas informações ajudariam a controlar despesas e planejar futuras aquisições.
+
+**3. Dashboard de suporte técnico**
+
+Reuniria informações sobre os chamados registrados, suas categorias, prioridades, status e serviços relacionados. Com isso, seria possível identificar os problemas mais recorrentes e acompanhar o volume de atendimentos.
+
+**4. Dashboard de licenças e softwares**
+
+Apresentaria a quantidade de licenças contratadas, as atribuições por colaborador, os softwares utilizados e as datas de validade. Esse painel ajudaria a evitar vencimentos inesperados e contratações desnecessárias.
+
+**5. Dashboard de manutenção e garantias**
+
+Permitiria acompanhar os equipamentos encaminhados para manutenção, os acionamentos de garantia, os fornecedores responsáveis e os resultados dos serviços executados.
+
+Dessa forma, os dashboards possibilitariam uma visualização mais clara das informações, reduzindo a necessidade de consultas manuais e contribuindo para decisões baseadas em dados.
 
 - **Aplicações analíticas e de IA: como o modelo pode alimentar análises preditivas, recomendações etc.**
 
