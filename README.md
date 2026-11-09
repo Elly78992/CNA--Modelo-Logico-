@@ -679,7 +679,10 @@ Assim, o modelo desenvolvido estabelece uma base de dados organizada que poderá
 [Script SQL](docs/Script_BD_Completo_CNA_TECNEWS.sql)
 ## **4-Massa de Dados**
 [Massa de Dados](docs/02_Massa_Dados_TecNews_.sql)
-## **5-Uso de Inteligência Artificial**
+
+## **5- Dicionário de Dados**
+[Dicionário de Dados](Dicionario-de-Dados-Entrega-2_(2).html)
+## **6-Uso de Inteligência Artificial**
 |Item|O que registrar|
 |----------------------|------------------|
 |**Ferramenta e etapa**| Foi utilizada a ferramenta ChatGPT, desenvolvida pela OpenAI, como apoio em diferentes etapas do projeto de banco de dados da TecNews. A ferramenta auxiliou na organização da estrutura do banco de dados, elaboração e revisão dos comandos SQL, criação das tabelas, definição de chaves primárias e estrangeiras, restrições de integridade, inserção da massa de dados, elaboração de consultas e desenvolvimento da proposta de arquitetura analítica para BI e IA. |
