@@ -4,9 +4,9 @@
 
 |Nome completo do aluno|RGM|Usuário do Github|
 |----------------------|---|------------------|
-| Caroline Barroso de Oliveria| 4806351-7|
-| Danielly Mariano da Costa| 4781783-6|
-| Maria Eduarda Kostkievicz Ferreira| 4790715-1|
+| Caroline Barroso de Oliveria| 4806351-7|CarolineBarroso|
+| Danielly Mariano da Costa| 4781783-6|Elly78992|
+| Maria Eduarda Kostkievicz Ferreira| 4790715-1|MadukFerreira|
 
 ## 1- **Relatório técnico** 
 
@@ -86,7 +86,7 @@ A CNA foi escolhida por ser uma organização à qual o grupo teve acesso para r
 - **Evidência da organização:**
   A organização escolhida para o desenvolvimento do projeto é a CNA. A evidência do levantamento consiste na planilha oficial de inventário disponibilizada para análise e nas informações obtidas durante a entrevista com um representante da empresa TecNews, responsável pelo suporte tecnológico da CNA.
 
-- **Responsável pela organização:**
+- **Responsável pela organização:** Rolando Silveira, +55 11 99654-1867
 
 ## **Relato da entrevista**
 
@@ -381,7 +381,7 @@ Essa relação permite vincular as aprovações às solicitações de compra cor
 - Relacionamento: Solicitação de Compra (1) para Cotação (N).
 Essa chave permite relacionar as cotações às solicitações que deram origem à necessidade de aquisição. Como a organização realiza pesquisas de preços e condições com diferentes fornecedores, esse relacionamento permite comparar as propostas recebidas para uma mesma solicitação.
 
-16. Cotação e Fornecedor
+**16. Cotação e Fornecedor**
 - Chave estrangeira: Cotacao.id_fornecedor.
 - Relacionamento: Fornecedor (1) para Cotação (N).
 Essa relação identifica qual fornecedor apresentou cada cotação. É importante para manter o histórico das propostas comerciais, possibilitando comparar valores, condições e fornecedores antes da decisão de compra.
@@ -601,6 +601,62 @@ Além desses indicadores, a empresa poderá acompanhar métricas complementares,
 
 Para calcular essas métricas com maior precisão, será importante manter os registros de datas, horários, valores e situações sempre atualizados.
 
+## 1.6.3 Potencial dos dados para BI: dashboards e relatórios
+
+A estrutura do banco de dados permite a integração futura com ferramentas de Business Intelligence, como Microsoft Power BI, possibilitando transformar os registros armazenados em gráficos, indicadores, tabelas e painéis interativos.
+
+Os relacionamentos entre as 20 tabelas permitem reunir informações de diferentes áreas em uma mesma análise, facilitando a identificação de padrões e o acompanhamento dos resultados.
+
+São propostos os seguintes dashboards:
+
+**1. Dashboard de patrimônio e equipamentos**
+
+Apresentaria a quantidade de equipamentos por situação, fabricante, modelo e tipo, além da distribuição dos equipamentos entre os colaboradores. Também permitiria acompanhar o histórico de movimentações e os equipamentos descartados.
+
+**2. Dashboard financeiro e de compras**
+
+Apresentaria os valores das compras realizadas, os gastos por fornecedor, a quantidade de solicitações aprovadas e pendentes e a comparação entre as cotações recebidas. Essas informações ajudariam a controlar despesas e planejar futuras aquisições.
+
+**3. Dashboard de suporte técnico**
+
+Reuniria informações sobre os chamados registrados, suas categorias, prioridades, status e serviços relacionados. Com isso, seria possível identificar os problemas mais recorrentes e acompanhar o volume de atendimentos.
+
+**4. Dashboard de licenças e softwares**
+
+Apresentaria a quantidade de licenças contratadas, as atribuições por colaborador, os softwares utilizados e as datas de validade. Esse painel ajudaria a evitar vencimentos inesperados e contratações desnecessárias.
+
+**5. Dashboard de manutenção e garantias**
+
+Permitiria acompanhar os equipamentos encaminhados para manutenção, os acionamentos de garantia, os fornecedores responsáveis e os resultados dos serviços executados.
+
+Dessa forma, os dashboards possibilitariam uma visualização mais clara das informações, reduzindo a necessidade de consultas manuais e contribuindo para decisões baseadas em dados.
+
+## 1.6.4 Aplicações analíticas e de IA
+
+Além das análises descritivas realizadas por ferramentas de BI, os dados da TecNews apresentam potencial para futuras aplicações de Inteligência Artificial e análise preditiva.
+
+Com uma quantidade maior de registros históricos e dados atualizados ao longo do tempo, poderão ser desenvolvidas soluções capazes de identificar tendências, estimar ocorrências e auxiliar na tomada de decisões.
+
+Entre as aplicações propostas, destacam-se:
+
+- **Previsão de necessidades de compras:** utilizar o histórico de aquisições, a quantidade de equipamentos em estoque e os registros de descarte para estimar futuras necessidades de reposição.
+- **Análise preditiva de manutenção:** analisar o histórico de manutenções, problemas técnicos e acionamentos de garantia para identificar equipamentos com maior possibilidade de apresentar falhas.
+- **Previsão de demanda de suporte:** utilizar o histórico de chamados, suas categorias e frequências para estimar períodos de maior necessidade de atendimento técnico.
+- **Recomendação de fornecedores:** comparar valores de cotações, histórico de compras e resultados dos serviços para auxiliar na identificação de fornecedores mais adequados.
+- **Identificação de padrões de problemas:** utilizar técnicas de análise de dados e processamento de linguagem natural para agrupar descrições de chamados e identificar problemas recorrentes.
+- **Otimização de licenças:** analisar a quantidade de licenças contratadas e atribuídas para identificar possíveis excessos ou necessidades de novas contratações.
+
+Para viabilizar essas aplicações, a empresa poderá futuramente integrar o banco de dados a ferramentas de análise estatística, linguagens de programação como Python e modelos de aprendizado de máquina.
+
+É importante destacar que essas aplicações representam possibilidades futuras, e não funcionalidades já implementadas no banco de dados atual. Para obter previsões confiáveis, será necessário ampliar o histórico de informações, manter os registros consistentes e utilizar dados suficientes para treinamento e validação dos modelos.
+
+## Considerações finais
+
+A proposta de arquitetura analítica para BI e IA demonstra que o banco de dados desenvolvido para a TecNews pode ir além do armazenamento e da organização de informações operacionais. Sua estrutura permite gerar indicadores, relatórios e análises que contribuem para o controle dos recursos tecnológicos, o planejamento financeiro e a melhoria dos serviços de suporte.
+
+A integração futura com ferramentas de Business Intelligence e Inteligência Artificial poderá ampliar a capacidade de análise da empresa, permitindo identificar tendências, antecipar necessidades e apoiar decisões mais eficientes.
+
+Assim, o modelo desenvolvido estabelece uma base de dados organizada que poderá evoluir para uma estrutura analítica mais avançada, acompanhando o crescimento e as necessidades da TecNews.
 |Problema ou KPI|Tabelas envolvidas|Consulta no script|
 |----------------------|---|------------------|
 
@@ -610,9 +666,9 @@ Para calcular essas métricas com maior precisão, será importante manter os re
 **Software utilizado:** BrModelo
 
 ## **3-Script SQL Completo**
-
+[Script SQL](docs/Script_BD_Completo_CNA_TECNEWS.sql)
 ## **4-Massa de Dados**
-
+[Massa de Dados](docs/02_Massa_Dados_TecNews_.sql)
 ## **5-Uso de Inteligência Artificial**
 |Item|O que registrar|
 |----------------------|------------------|
