@@ -565,6 +565,7 @@ Dessa forma, os dashboards possibilitariam uma visualização mais clara das inf
 
 ## **2-Modelo Lógico Relacional**
 ![Modelo Logico](Modelo%20L%C3%B3gico%20e%20Conceitual/modelo_logico.jpg)
+**Software utilizado:** BrModelo
 
 ## **3-Script SQL Completo**
 
